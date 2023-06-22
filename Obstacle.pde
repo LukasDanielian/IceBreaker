@@ -41,10 +41,11 @@ class Obstacle
         )
       {
         snowballs.remove(i);
+        ammo += 2;
         
         for(int j = 0; j < 10; j++)
           effects.add(new Effect(pos));
-          
+        
         return true;
       }
     }

@@ -1,10 +1,17 @@
 void keyPressed()
 {
-  if(key == ' ')
+  if(ammo > 0 && key == ' ')
+  {
     snowballs.add(new Snowball());
+    ammo--;
+  }
 }
 
 void mousePressed()
 {
-  snowballs.add(new Snowball());
+  if(ammo > 0)
+  {
+    snowballs.add(new Snowball());
+    ammo--;
+  }
 }

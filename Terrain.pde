@@ -28,14 +28,14 @@ class Terrain
     
     push();
     translate(-width * 2,height * .75,0);
-    noStroke();
+    noFill();
     
     for(int z = 0; z < rows-1; z++)
     {
       beginShape(TRIANGLE_STRIP);
       for(int x = 0; x < cols; x++)
       {
-        fill((frameCount*.1) % 255,255,200);
+        stroke((frameCount*.1) % 255,255,200);
         vertex(x*scale,grid[x][z],-z*scale);
         vertex(x*scale, grid[x][z+1],-(z+1)*scale);
       }

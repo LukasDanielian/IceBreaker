@@ -4,11 +4,11 @@ class Obstacle
 
   Obstacle()
   {
-    pos = new PVector(random(-width/2,width/2), random(-height/4,height/2), -width * 2);
+    pos = new PVector(random(-width,width), random(-height/4,height/3), -width * 3);
     size = new PVector(height * .1, height * .1, height * .1);
     
-    while(abs(pos.x) < width * .2 || pos.x < -width/2 + size.x/2 || pos.x > width/2 - size.x/2)
-      pos.x = random(-width/2,width/2);
+    while(abs(pos.x) < width * .2)
+      pos.x = random(-width,width);
   }
 
   void render()
@@ -17,10 +17,11 @@ class Obstacle
 
     pushMatrix();
     translate(pos.x, pos.y, pos.z);
+    rotateY(frameCount * .1);
     box(size.x, size.y, size.z);
     popMatrix();
 
-    pos.z += speed;
+    pos.z += 15;
   }
 
   boolean isHit()

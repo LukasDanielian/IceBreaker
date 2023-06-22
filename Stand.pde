@@ -10,14 +10,15 @@ class Stand
   
   void render()
   {
-    fill(100);
+    fill((frameCount*.1) % 255,255,255);
+    stroke(255);
     
     push();
     translate(pos.x,pos.y,pos.z);
     box(size.x,size.y,size.z);
     pop();
     
-    pos.z += speed;
+    pos.z += 15;
   }
   
   boolean offScreen()

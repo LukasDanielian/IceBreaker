@@ -2,7 +2,7 @@ ArrayList<Obstacle> obstacles;
 ArrayList<Snowball> snowballs;
 ArrayList<Effect> effects;
 ArrayList<Stand> stands;
-float speed;
+Terrain terrain;
 
 void setup()
 {
@@ -10,30 +10,28 @@ void setup()
   shapeMode(CENTER);
   rectMode(CENTER);
   textAlign(CENTER,CENTER);
+  colorMode(HSB);
   noStroke();
-  camera(0,0,0,  0,0,-1,  0,1,0);
   perspective(PI/3, float(width)/height, .01, width * width);
   
   obstacles = new ArrayList<Obstacle>();
   snowballs = new ArrayList<Snowball>();
   effects = new ArrayList<Effect>();
   stands = new ArrayList<Stand>();
-  speed = 10;
+  terrain = new Terrain();
 }
 
 void draw()
 {
   background(0);
+  camera(0,0,0,  0,0,-1,  0,1,0);
   lights();
-  spotLight(255,255,255,  0,0,0, 0,0,-1,PI/3, 100);
-  fill(100);
-  box(width,height,width * 10);
+  terrain.render();
   
   if(frameCount % 100 == 0)
   {
     obstacles.add(new Obstacle());
     stands.add(new Stand(obstacles.get(obstacles.size()-1)));
-    speed += .5;
   }
   
   for(int i = 0; i < snowballs.size(); i++)
@@ -83,4 +81,11 @@ void draw()
       i--;
     }
   }
+  
+  
+  hint(DISABLE_DEPTH_TEST);
+  camera();
+  fill(255);
+  rect(0,0,100,100);
+  hint(ENABLE_DEPTH_TEST);
 }

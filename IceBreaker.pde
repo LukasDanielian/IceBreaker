@@ -2,6 +2,7 @@ ArrayList<Obstacle> obstacles;
 ArrayList<Snowball> snowballs;
 ArrayList<Effect> effects;
 ArrayList<Stand> stands;
+ArrayList<Text> texts;
 Terrain terrain;
 int score, ammo;
 boolean gameOver;
@@ -20,6 +21,7 @@ void setup()
   snowballs = new ArrayList<Snowball>();
   effects = new ArrayList<Effect>();
   stands = new ArrayList<Stand>();
+  texts = new ArrayList<Text>();
   terrain = new Terrain();
   score = 0;
   ammo = 10;
@@ -91,9 +93,18 @@ void draw()
       i--;
     }
   }
-
-  if(!gameOver)
-    score++;
+  
+  for(int i = 0; i < texts.size(); i++)
+  {
+    Text text = texts.get(i);
+    text.render();
+    
+    if(text.tooSmall())
+    {
+      texts.remove(i);
+      i--;
+    }
+  }
 
   hint(DISABLE_DEPTH_TEST);
   camera();
@@ -118,6 +129,9 @@ void draw()
       text(letter,x,height/2 + sin(x * .1 + frameCount * .1) * 100);
       x += 60;
     }
+    
+    if(keyPressed && key == ' ')
+      setup();
   }
   hint(ENABLE_DEPTH_TEST);
 }

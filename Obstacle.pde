@@ -40,8 +40,11 @@ class Obstacle
         temp.z < pos.z + size.z/2
         )
       {
+        score += 100;
         snowballs.remove(i);
         ammo += 2;
+        
+        texts.add(new Text(pos,100));
         
         for(int j = 0; j < 10; j++)
           effects.add(new Effect(pos));

@@ -11,7 +11,6 @@ class Stand
   void render()
   {
     fill((frameCount*.1) % 255,255,255);
-    stroke(255);
     
     push();
     translate(pos.x,pos.y,pos.z);

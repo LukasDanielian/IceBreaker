@@ -3,6 +3,7 @@ ArrayList<Snowball> snowballs;
 ArrayList<Effect> effects;
 ArrayList<Stand> stands;
 ArrayList<Text> texts;
+ArrayList<Wall> walls;
 Terrain terrain;
 int score, ammo;
 boolean gameOver;
@@ -22,6 +23,7 @@ void setup()
   effects = new ArrayList<Effect>();
   stands = new ArrayList<Stand>();
   texts = new ArrayList<Text>();
+  walls = new ArrayList<Wall>();
   terrain = new Terrain();
   score = 0;
   ammo = 10;
@@ -40,6 +42,9 @@ void draw()
     obstacles.add(new Obstacle());
     stands.add(new Stand(obstacles.get(obstacles.size()-1)));
   }
+  
+  if(frameCount % 1000 == 0)
+    walls.add(new Wall());
 
   if (ammo <= 0 && snowballs.size() == 0)
   {
@@ -105,7 +110,22 @@ void draw()
       i--;
     }
   }
-
+  
+  for(int i = 0; i < walls.size(); i++)
+  {
+    Wall wall = walls.get(i);
+    wall.render();
+    
+    if(wall.atCamera())
+      gameOver = true;
+     
+    if(wall.isHit())
+    {
+      walls.remove(i);
+      i--;
+    }
+  }
+  
   hint(DISABLE_DEPTH_TEST);
   camera();
   fill(255);

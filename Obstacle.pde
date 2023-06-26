@@ -42,7 +42,7 @@ class Obstacle
       {
         score += 100;
         snowballs.remove(i);
-        ammo += 2;
+        ammo += 5;
         
         texts.add(new Text(pos,100));
         

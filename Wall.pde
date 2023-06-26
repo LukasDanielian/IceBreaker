@@ -39,13 +39,13 @@ class Wall
         )
       {
         
-        snowballs.remove(i);
+        snowballs.remove(i);m
         health--;
 
         if (health <= 0)
         {
           score += 500;
-          texts.add(new Text(pos,1000));
+          texts.add(new Text(pos,500));
           
           for (int j = 0; j < 20; j++)
           {

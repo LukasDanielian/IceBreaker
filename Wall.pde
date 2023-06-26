@@ -39,7 +39,7 @@ class Wall
         )
       {
         
-        snowballs.remove(i);m
+        snowballs.remove(i);
         health--;
 
         if (health <= 0)

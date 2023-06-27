@@ -1,6 +1,6 @@
 ArrayList<Renderable> items;
 ArrayList<Snowball> snowballs;
-int score, highScore,ammo, FPS = 60;
+int score, counter, highScore,ammo, FPS = 60;
 boolean gameOver;
 
 void setup()
@@ -20,6 +20,7 @@ void setup()
   snowballs = new ArrayList<Snowball>();
   items.add(new Terrain());
   score = 0;
+  counter = 5;
   ammo = 10;
   gameOver = false;
   

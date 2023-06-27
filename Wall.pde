@@ -1,5 +1,3 @@
-int counter = 5;
-
 class Wall implements Renderable
 {
   PVector pos, size;

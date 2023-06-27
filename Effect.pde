@@ -1,4 +1,4 @@
-class Effect
+class Effect implements Renderable
 {
   PVector pos, vel;
   float size, sizeChanger;
@@ -28,7 +28,7 @@ class Effect
     vel.y += 1;
   }
   
-  boolean tooSmall()
+  boolean shouldRemove()
   {
     return size <= 0;
   }

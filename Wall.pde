@@ -1,13 +1,17 @@
-class Wall
+int counter = 5;
+
+class Wall implements Renderable
 {
   PVector pos, size;
-  int health;
+  int health, points;
 
   public Wall()
   {
     pos = new PVector(0, 0, -width * 3);
     size = new PVector(width * .4, height, width * .1);
-    health = 5;
+    health = counter;
+    points = counter * 100;
+    counter++;
   }
 
   void render()
@@ -17,13 +21,32 @@ class Wall
     push();
     translate(pos.x, pos.y, pos.z);
     box(size.x, size.y, size.z);
+    
+    translate(0,-size.y/2 * 1.15,0);
+    noFill();
+    stroke(255);
+    rect(0,0,size.x,size.y * .1);
+    
+    rectMode(NORMAL);
+    noStroke();
+    fill(255);
+    translate(-size.x/2,-size.y *.05);
+    rect(0,0,(size.x/(counter-1)) * health,size.y * .1);
+    rectMode(CENTER);
     pop();
 
     pos.z += 15;
   }
 
-  boolean isHit()
+  boolean shouldRemove()
   {
+    if(pos.z >= 0)
+    {
+      ammo = 0;
+      gameOver = true;
+      return true;
+    }
+      
     for (int i = 0; i < snowballs.size(); i++)
     {
       PVector temp = snowballs.get(i).pos;
@@ -44,14 +67,14 @@ class Wall
 
         if (health <= 0)
         {
-          score += 500;
-          texts.add(new Text(pos,500));
+          score += points;
+          items.add(new Text(pos,points));
           
           for (int j = 0; j < 20; j++)
           {
             PVector temp2 = new PVector(pos.x + random(-size.x/2,size.x/2), pos.y + random(-size.y/2,size.y/2), pos.z);
             for (int k = 0; k < 10; k++)
-              effects.add(new Effect(temp2));
+              items.add(new Effect(temp2));
           }
 
           return true;
@@ -60,10 +83,5 @@ class Wall
     }
 
     return false;
-  }
-
-  boolean atCamera()
-  {
-    return pos.z >= 0;
   }
 }

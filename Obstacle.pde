@@ -1,4 +1,4 @@
-class Obstacle
+class Obstacle implements Renderable
 {
   PVector pos, size;
 
@@ -14,7 +14,7 @@ class Obstacle
   void render()
   {
     fill(#9CCECA);
-
+    noStroke();
     pushMatrix();
     translate(pos.x, pos.y, pos.z);
     rotateY(frameCount * .1);
@@ -24,8 +24,11 @@ class Obstacle
     pos.z += 15;
   }
 
-  boolean isHit()
+  boolean shouldRemove()
   {
+    if(pos.z > 0)
+      return true;
+      
     for (int i = 0; i < snowballs.size(); i++)
     {
       PVector temp = snowballs.get(i).pos;
@@ -44,20 +47,15 @@ class Obstacle
         snowballs.remove(i);
         ammo += 5;
         
-        texts.add(new Text(pos,100));
+        items.add(new Text(pos,100));
         
         for(int j = 0; j < 10; j++)
-          effects.add(new Effect(pos));
+          items.add(new Effect(pos));
         
         return true;
       }
     }
 
     return false;
-  }
-
-  boolean offScreen()
-  {
-    return pos.z > 0;
   }
 }

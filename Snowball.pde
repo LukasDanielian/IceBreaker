@@ -1,4 +1,4 @@
-class Snowball
+class Snowball implements Renderable
 {
   PVector pos, vel;
   
@@ -12,6 +12,7 @@ class Snowball
   {
     fill(255);
     pushMatrix();
+    noStroke();
     translate(pos.x,pos.y,pos.z);
     sphere(15);
     popMatrix();
@@ -20,7 +21,7 @@ class Snowball
     vel.y += .5;
   }
   
-  boolean tooFar()
+  boolean shouldRemove()
   {
     return pos.y > height;
   }

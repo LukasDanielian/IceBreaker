@@ -1,4 +1,4 @@
-class Stand
+class Stand implements Renderable
 {
   PVector pos, size;
   
@@ -11,7 +11,7 @@ class Stand
   void render()
   {
     fill((frameCount*.1) % 255,255,255);
-    
+    noStroke();
     push();
     translate(pos.x,pos.y,pos.z);
     box(size.x,size.y,size.z);
@@ -20,7 +20,7 @@ class Stand
     pos.z += 15;
   }
   
-  boolean offScreen()
+  boolean shouldRemove()
   {
     return pos.z > 0;
   }

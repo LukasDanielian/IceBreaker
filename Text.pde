@@ -1,4 +1,4 @@
-class Text
+class Text implements Renderable
 {
   float size;
   PVector pos;
@@ -15,7 +15,7 @@ class Text
   {
     textSize(size);
     fill(#9CCECA);
-    
+    noStroke();
     push();
     translate(pos.x,pos.y,pos.z);
     text("+" + amount,0,0);
@@ -25,7 +25,7 @@ class Text
     size -= 1;
   }
   
-  boolean tooSmall()
+  boolean shouldRemove()
   {
     return size <= 0;
   }

@@ -4,14 +4,27 @@ void gameConditions()
   {
     Obstacle toAdd = new Obstacle();
     items.add(toAdd);
-    items.add(new Stand(toAdd));
+    items.add(new Stand(toAdd.pos,toAdd.size));
   }
 
   if (frameCount % 1000 == 0)
-    items.add(new Wall());
+  {
+    Wall toAdd = new Wall();
+    items.add(toAdd);
+    items.add(new Stand(toAdd.pos,toAdd.size));
+  }
 
   if (ammo <= 0 && snowballs.size() == 0)
     gameOver = true;
+    
+  if(gameOver && score > highScore)
+  {
+    highScore = score;
+    PrintWriter output = createWriter("/data/highScore.txt");
+    output.println(highScore);
+    output.flush();
+    output.close();
+  }
 }
 
 void renderObjects()
@@ -68,12 +81,13 @@ void renderHUD()
   hint(DISABLE_DEPTH_TEST);
   camera();
   fill(255);
-  textSize(50);
-  text("Score: " + score, width/2, height * .05);
+  
+  textSize(30);
+  text("High Score: " + highScore + "\nScore: " + score, width/2, height * .05);
   text("Snowballs: " + ammo, width/2, height * .9);
 
   textSize(10);
-  text("FPS: " + frameRate, width * .02, height * .01);
+  text("FPS: " + frameRate, width * .98, height * .01);
 
   if (gameOver)
   {

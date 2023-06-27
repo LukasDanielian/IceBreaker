@@ -1,6 +1,6 @@
 ArrayList<Renderable> items;
 ArrayList<Snowball> snowballs;
-int score, ammo, FPS = 60;
+int score, highScore,ammo, FPS = 60;
 boolean gameOver;
 
 void setup()
@@ -22,6 +22,11 @@ void setup()
   score = 0;
   ammo = 10;
   gameOver = false;
+  
+  String line = "";
+  try{line = createReader("highScore.txt").readLine();}
+  catch(IOException e){e.printStackTrace();}
+  highScore = Integer.parseInt(line);
 }
 
 void draw()

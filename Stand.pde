@@ -2,10 +2,10 @@ class Stand implements Renderable
 {
   PVector pos, size;
   
-  Stand(Obstacle o)
+  Stand(PVector pos, PVector size)
   {
-    pos = new PVector(o.pos.x, (o.pos.y + o.size.y/2 + height)/2, o.pos.z);
-    size = new PVector(o.size.x * 1.5, height - o.pos.y - o.size.y/2, o.size.z * 1.5);
+    this.pos = new PVector(pos.x, (pos.y + size.y/2 + height)/2, pos.z);
+    this.size = new PVector(size.x * 1.5, height - pos.y - size.y/2, size.z * 1.5);
   }
   
   void render()

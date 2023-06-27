@@ -17,7 +17,7 @@ void gameConditions()
   if (ammo <= 0 && snowballs.size() == 0)
     gameOver = true;
     
-  if(gameOver )//&& score > highScore)
+  if(gameOver && score > highScore)
   {
     highScore = score;
     PrintWriter output = createWriter("data/highScore.txt");

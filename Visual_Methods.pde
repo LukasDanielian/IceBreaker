@@ -81,9 +81,8 @@ void renderHUD()
   hint(DISABLE_DEPTH_TEST);
   camera();
   fill(255);
-  
   textSize(30);
-  text("High Score: " + highScore + "\nScore: " + score, width/2, height * .05);
+  text("High Score: " + highScore + "\nScore: " + score, width/2, height * .1);
   text("Snowballs: " + ammo, width/2, height * .9);
 
   textSize(10);

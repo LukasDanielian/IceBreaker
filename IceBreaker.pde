@@ -13,7 +13,7 @@ void setup()
   hint(ENABLE_STROKE_PERSPECTIVE);
   frameRate(FPS);
   noCursor();
-  noStroke();
+  textSize(128);
   perspective(PI/3, float(width)/height, .01, width * width);
   
   items = new ArrayList<Renderable>();

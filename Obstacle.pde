@@ -13,7 +13,7 @@ class Obstacle implements Renderable
 
   void render()
   {
-    fill(#9CCECA);
+    fill(130,255,255,75);
     noStroke();
     pushMatrix();
     translate(pos.x, pos.y, pos.z);

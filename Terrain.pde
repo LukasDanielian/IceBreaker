@@ -14,6 +14,7 @@ class Terrain implements Renderable
   void render()
   {
     float zoff = frameCount * .015;
+    
     for(int z = 0; z < rows; z++)
     {
       float xoff = 0;

@@ -63,6 +63,7 @@ void renderHelperLine()
   noFill();
   beginShape();
   strokeWeight(5);
+  
   for (int i = 0; i < 25; i++)
   {
     stroke((i*15 - frameCount * 10 & 255), 255, 255);
@@ -84,7 +85,6 @@ void renderHUD()
   textSize(30);
   text("High Score: " + highScore + "\nScore: " + score, width/2, height * .1);
   text("Snowballs: " + ammo, width/2, height * .9);
-
   textSize(10);
   text("FPS: " + frameRate, width * .98, height * .01);
 
@@ -107,5 +107,6 @@ void renderHUD()
     if (keyPressed && key == ' ')
       setup();
   }
+  
   hint(ENABLE_DEPTH_TEST);
 }

@@ -14,7 +14,7 @@ class Wall implements Renderable
 
   void render()
   {
-    fill(#9CCECA);
+    fill(130,255,255,75);
 
     push();
     translate(pos.x, pos.y, pos.z);
@@ -71,6 +71,7 @@ class Wall implements Renderable
           for (int j = 0; j < 20; j++)
           {
             PVector temp2 = new PVector(pos.x + random(-size.x/2,size.x/2), pos.y + random(-size.y/2,size.y/2), pos.z);
+            
             for (int k = 0; k < 10; k++)
               items.add(new Effect(temp2));
           }

@@ -13,7 +13,7 @@ class Effect implements Renderable
   
   void render()
   {
-    fill(#9CCECA);
+    fill(130,255,255,75);
     
     push();
     translate(pos.x,pos.y,pos.z);

@@ -1,5 +1,8 @@
 void gameConditions()
 {
+  for(int i = 0; i < 5; i++)
+    items.add(new Star());
+    
   if (frameCount % 100 == 0)
   {
     Obstacle toAdd = new Obstacle();
